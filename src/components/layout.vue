@@ -5,7 +5,7 @@
                 <!-- 1.0 左边菜单 -->
                 <img src="../../statics/imgs/logo.png" alt="">
                 <div class="layout menu">
-                <el-menu default-active="2" class="el-menu-vertical-demo">
+                <el-menu :default-active="currentMID" class="el-menu-vertical-demo">
                     <el-submenu index="1">
                         <template slot="title">
                             <i class="el-icon-message"></i>购物商城
@@ -16,7 +16,9 @@
                                     内容管理
                                 </router-link>
                             </el-menu-item>
+                            <router-link to="/admin/catelist">
                             <el-menu-item index="1-2">分类管理</el-menu-item>
+                            </router-link>
                             <el-menu-item index="1-3">评论管理</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
@@ -120,9 +122,13 @@
     export default {
         data() {
             return {
+                currentMID:"1-1",
             }
         },
         methods: {
+        },
+        mounted(){
+            this.currentMID = window.localStorage.getItem("currentMID");
         }
     }
 </script>
